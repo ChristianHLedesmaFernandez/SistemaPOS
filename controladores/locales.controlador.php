@@ -9,8 +9,7 @@ class ControladorLocales{
 	static public function ctrMostrarLocalesSugerido($item, $valor){		
 		$respuesta = ModeloLocales::mdlMostrarLocalesSugerido($item, $valor);
 		return $respuesta;	
-	}
-	
+	}	
 	// Crear Local
 	static public function ctrCrearLocal(){
 		if(isset($_POST["nuevoLocal"])){
@@ -115,8 +114,6 @@ class ControladorLocales{
 			}
 		}
 	}
-
-
 	// Eliminar Locales
 	static public function ctrBorrarLocal(){
 		if(isset($_GET["idLocal"])){

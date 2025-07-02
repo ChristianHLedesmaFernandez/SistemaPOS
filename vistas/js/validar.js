@@ -248,6 +248,8 @@ if (form[0] !== undefined){
   var formulario = form[0];
   // Arreglo con todos los inputs del formulario
   const inputs = document.querySelectorAll(`#${formulario['id']} input`);
+
+
   // Disparador de la funcion
   // Se ejecuta con cada pulsacion del teclado y al perder el foco.
   /*
@@ -273,12 +275,25 @@ if (form[0] !== undefined){
               var errores = (campos.usuario && campos.password);         
           break;
           case "formRegistro": 
-              var errores = false;         
+              //var errores = false;  var errores = true; 
+            //
+            console.log("errores:");
+            console.log("ingNombre: ", ingNombre);
+            console.log("ingUsuario: ", ingUsuario);
+            console.log("ingEmail: ", ingEmail);
+            console.log("reIngEmail: ", reIngEmail);
+            console.log("ingPassword: ", ingPassword);
+            console.log("reIngPassword: ", reIngPassword)
+
+
+              var errores = (ingNombre && ingUsuario && ingEmail && reIngEmail && ingPassword && reIngPassword)
+              
           break;
           case "formRecupera":          
               var errores = (campos.correo);          
           break;
       }
+
       if(!errores){
         //
         console.log("Error en el Formulario");

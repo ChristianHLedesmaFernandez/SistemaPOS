@@ -57,7 +57,7 @@ function isDireccion($direccion){
 		return false;
 	}
 }
-// Validar Direccion
+// Validar Telefono
 function isTelefono($telefono){
 	if(preg_match('/^[()\-0-9 ]+$/', $telefono)){
 		return true;

@@ -29,7 +29,7 @@
     }
 
     ?>
-<p> hola puto</p>
+    
   </div>
 
   <div class="row">

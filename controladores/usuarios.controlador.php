@@ -9,10 +9,7 @@ class ControladorUsuarios{
 		return $respuesta;
 	}
 	// Crear Usuario
-
-	//                    Separar mejor los errores. para una mejor vista 
-
-
+	//                    Separar mejor los errores. para una mejor vista
 
 	static public function ctrCrearUsuario(){
 		if(isset($_POST['nuevoUsuario'])){
@@ -409,9 +406,20 @@ class ControladorUsuarios{
 			// Fin Verificar Errores
 			if ($errores == 0) {
 				// Validar captcha directamente en google. regresa un Json
-				$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
-				$arr = json_decode($response, TRUE);
-				// Si los datos que regresa google son correctos empesamos a registrar el usuario caso contrario regresamos un msj de error
+				
+// re rompe si viene mal la consulta al captcha
+				try {
+					$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
+					$arr = json_decode($response, TRUE);
+					// Si los datos que regresa google son correctos empesamos a registrar el usuario caso contrario regresamos un msj de error
+
+				} catch (Exception $e) {
+					console.log("ERROR DEL CAPTCHA");
+				}
+				
+
+// Capturar error con try catch
+
 				if ($arr['success']) {
 					// Ciframos la contraseña para guardarla en la Base de datos.
 					$pass_hash = cifrarPassword($password);
@@ -430,6 +438,7 @@ class ControladorUsuarios{
 							   	   "foto" 		=> $ruta);
 
 					$respuesta = ModeloUsuarios::mdlRegistrarUsuario($datos);
+					
 					if($respuesta){
 						// Enviar al Administrador un correo con una notificacion con la peticion de Registro.
 						$url = 'http://'.$_SERVER["SERVER_NAME"].'/willycafe/index.php';

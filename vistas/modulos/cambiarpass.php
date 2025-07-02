@@ -53,7 +53,7 @@ $validar -> ctrValidarTokenPass();
         <input type="hidden" id="user_id" name="user_id" value ="<?php echo $_GET['user_id']; ?>" />
           
         <input type="hidden" id="token" name="token" value ="<?php echo $_GET['token']; ?>" />
-      <!-- Fin cammpos ocultos -->
+      <!-- Fin campos ocultos -->
       <div class="row">
 
         <div class="col-xs-4">
